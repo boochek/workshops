@@ -20,6 +20,7 @@ gem 'therubyracer', platforms: :ruby
 
 group :development do
   gem 'spring'
+  gem 'guard'
 end
 
 group :development, :test do
