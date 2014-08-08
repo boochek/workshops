@@ -1,5 +1,4 @@
 class ProductsController < ApplicationController
-  before_filter :authenticate_user!
   before_filter :check_owner, only: [:edit, :update]
 
   expose(:category)

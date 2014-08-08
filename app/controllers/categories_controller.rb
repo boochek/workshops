@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_filter :authenticate!, only: [:new, :edit, :update, :destroy, :create]
+  before_filter :check_admin, only: [:new, :edit, :update, :destroy, :create]
 
   expose(:categories)
   expose(:category)
@@ -45,8 +45,7 @@ class CategoriesController < ApplicationController
       params.require(:category).permit(:name)
     end
 
-    def authenticate!
-      authenticate_user!
+    def check_admin
       unless current_user.try(:admin?)
         redirect_to new_user_session_path
       end
