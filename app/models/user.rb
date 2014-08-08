@@ -8,4 +8,9 @@ class User < ActiveRecord::Base
   has_many :products
 
   validates :firstname, :lastname, presence: true
+
+  def fullname
+    [firstname, lastname].join(' ')
+  end
+
 end
