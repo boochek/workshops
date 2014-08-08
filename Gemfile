@@ -11,6 +11,7 @@ gem 'simple_form'
 gem 'bootstrap-sass', '~> 3.1.1'
 
 gem 'haml-rails'
+gem 'slim'
 
 gem 'sass-rails'
 gem 'coffee-rails'
@@ -21,6 +22,7 @@ gem 'therubyracer', platforms: :ruby
 group :development do
   gem 'spring'
   gem 'guard'
+  gem 'better_errors'
 end
 
 group :development, :test do
