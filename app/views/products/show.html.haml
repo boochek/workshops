@@ -1,26 +1,31 @@
-%p#notice= notice
-%p#error= flash[:error]
-
+.page-header
+  %h4= "Product:"
+  %h2= product.title
 %p
-  %b Title:
-  = product.title
-%p
-  %b Description:
+  %strong= "Description:"
+  %br
   = product.description
 %p
-  %b Price:
-  = product.price
-
+  %strong= "Price"
+  %br
+  = number_to_currency(product.price)
 %p
-  %b Category
+  %strong= "Category"
+  %br
   = product.category.name
-
 %p
-  %b Reviews
+  %strong= "Average rating"
+  %br
+  = number_with_precision(product.average_rating, precision: 2)
+  %br
+  %br
+%p
+  %h4 Reviews:
   = render 'reviews/form'
 
 = render reviews
 
-= link_to 'Edit', edit_category_product_path(category.id, product.id)
-\|
-= link_to 'Back', category_products_path
+.form-actions
+  = link_to "Back", products_path, class: 'btn'
+  = link_to "Edit", edit_category_product_path(product.category, product), class: 'btn btn-info'
+  = link_to "Delete", category_product_path(product.category, product), method: "delete", data: { confirm: t('.confirm', default: t("helpers.links.confirm", default:'Are you sure?')) }, class: 'btn btn-warning'

@@ -1,7 +1,4 @@
-%h1 Editing product
+.page-header
+  %h2= "Edit product"
+= render partial: "form"
 
-= render 'form'
-
-= link_to 'Show', category_product_path(category, product)
-\|
-= link_to 'Back', category_path(category)
