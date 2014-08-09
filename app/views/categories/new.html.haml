@@ -1,5 +1,6 @@
-%h1 New category
-
-= render 'form'
-
-= link_to 'Back', categories_path
+.page-header
+  %h2 New category
+= render partial: "form"
+.form-actions
+  = link_to "Show", category, class: 'btn'
+  = link_to "Back", categories_path, class: 'btn'

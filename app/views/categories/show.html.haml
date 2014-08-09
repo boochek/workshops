@@ -1,17 +1,18 @@
-%p#notice= notice
+.page-header
+  %h5= "Category:"
+  %h2= category.name
 
 %p
-  %b Name:
-  = category.name
-
-%p
+  %h4= "Products:"
   - category.products.each do |product|
-    = product.title
-
+    %ul
+      %li= product.title
+  %br
 %p
-  %h3 New product
-  = render 'products/form'
+  %h5= "Create new product"
+  = render partial: "products/form"
 
-= link_to 'Edit', edit_category_path(category)
-\|
-= link_to 'Back', categories_path
+.form-actions
+  = link_to "Back", categories_path, class: 'btn'
+  = link_to "Edit category", edit_category_path(category), class: 'btn btn-info'
+  = link_to "Delete category", category_path(category), method: "delete", data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-warning'

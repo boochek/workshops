@@ -1,19 +1,17 @@
-%h1 Listing categories
-
-%table
-  %tr
-    %th Name
-    %th
-    %th
-    %th
-
-  - categories.each do |category|
+.page-header
+  %h2= "Categories"
+%table.table.table-striped
+  %thead
     %tr
-      %td= category.name
-      %td= link_to 'Show', category
-      %td= link_to 'Edit', edit_category_path(category)
-      %td= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
-= link_to 'New Category', new_category_path
+      %th= "Name"
+      %th= "Actions"
+  %tbody
+    - categories.each do |category|
+      %tr
+        %td= link_to category.name, category_path(category)
+        %td
+          = link_to "Show", category_path(category), class: 'btn'
+          = link_to "Edit", edit_category_path(category), class: 'btn btn-info'
+          = link_to "Delete", category_path(category), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-warning'
+.form-actions
+  = link_to "Create new category", new_category_path, class: 'btn btn-primary'

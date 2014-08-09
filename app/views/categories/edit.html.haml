@@ -1,7 +1,6 @@
-%h1 Editing category
-
-= render 'form'
-
-= link_to 'Show', category
-\|
-= link_to 'Back', categories_path
+.page-header
+  %h2 Editing category
+= render partial: "form"
+.form-actions
+  = link_to "Show", category, class: 'btn'
+  = link_to "Back", categories_path, class: 'btn'
