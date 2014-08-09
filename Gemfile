@@ -18,6 +18,8 @@ gem 'coffee-rails'
 gem 'uglifier'
 
 gem 'therubyracer', platforms: :ruby
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
 
 group :development do
   gem 'spring'
