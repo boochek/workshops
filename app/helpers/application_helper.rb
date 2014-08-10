@@ -14,4 +14,8 @@ module ApplicationHelper
     nil
   end
 
+  def d(date)
+    date.strftime("%d-%m-%Y at %H:%M:%S")
+  end
+
 end

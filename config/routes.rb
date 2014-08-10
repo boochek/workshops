@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   end
   resources :products, only: [:index, :delete]
 
+  get 'admin' => 'users#index'
+
   root 'categories#index'
 end
