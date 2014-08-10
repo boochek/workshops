@@ -4,11 +4,15 @@
   %thead
     %tr
       %th= "Name"
+      %th= "Products"
       %th= "Actions"
   %tbody
     - categories.each do |category|
       %tr
         %td= link_to category.name, category_path(category)
+        %td
+          %span.badge
+            = category.products.size
         %td
           = link_to "Show", category_path(category), class: 'btn'
           = link_to "Edit", edit_category_path(category), class: 'btn btn-info'

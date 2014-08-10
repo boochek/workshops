@@ -4,10 +4,18 @@
 
 %p
   %h4= "Products:"
-  - category.products.each do |product|
-    %ul
-      %li= product.title
-  %br
+  .row
+    .span3
+      %table.table.table-condensed
+        %tbody
+          - category.products.each do |product|
+            %tr
+              %td= link_to product.title, category_product_path(product.category, product)
+              %td= number_to_currency(product.price)
+          %tr
+            %td
+            %td
+    .span9
 %p
   %h5= "Create new product"
   = render partial: "products/form"
