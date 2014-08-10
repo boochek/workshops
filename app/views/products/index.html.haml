@@ -5,6 +5,7 @@
     %tr
       %th= "Title"
       %th= "Description"
+      %th= "Rating"
       %th= "Price"
       %th= "Category"
       %th= "Actions"
@@ -13,11 +14,12 @@
       %tr
         %td= link_to product.title, category_product_path(product.category, product)
         %td= product.description
+        %td
+          - stars(product.average_rating).times do
+            = glyph(:star)
         %td= number_to_currency(product.price)
         %td= product.category.name
         %td
           = link_to "Show", category_product_path(product.category, product), class: 'btn'
           = link_to "Edit", edit_category_product_path(product.category, product) , class: 'btn btn-info'
           = link_to "Delete", category_product_path(product.category, product), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-warning'
-
-/ = link_to "Create new product", , class: 'btn btn-primary'

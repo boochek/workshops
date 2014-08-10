@@ -18,4 +18,8 @@ module ApplicationHelper
     date.strftime("%d-%m-%Y at %H:%M:%S")
   end
 
+  def stars(rating)
+    rating > 0 ? rating.to_i : 0
+  end
+
 end

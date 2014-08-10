@@ -1,4 +1,11 @@
-%p= review.content
-%p
-  %b= review.rating
-  %em= review.author
+.row
+  .span4
+    .well.well-small
+      %p= review.content
+      %p
+        %p
+          - stars(review.rating).times do
+            = glyph(:star_empty)
+        %em= review.author
+        %p.text-info
+          = "#{d(review.created_at)}"

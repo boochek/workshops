@@ -6,26 +6,29 @@
   %br
   = product.description
 %p
-  %strong= "Price"
+  %strong= "Price:"
   %br
   = number_to_currency(product.price)
 %p
-  %strong= "Category"
+  %strong= "Category:"
   %br
   = product.category.name
 %p
-  %strong= "Average rating"
+  %strong= "Average rating:"
   %br
-  = number_with_precision(product.average_rating, precision: 2)
+  = "(#{number_with_precision(product.average_rating, precision: 2)})"
+  - stars(product.average_rating).times do
+    = glyph(:star)
   %br
   %br
+.form-actions
+  = link_to "Back", products_path, class: 'btn'
+  = link_to "Edit", edit_category_product_path(product.category, product), class: 'btn btn-info'
+  = link_to "Delete", category_product_path(product.category, product), method: "delete", data: { confirm: t('.confirm', default: t("helpers.links.confirm", default:'Are you sure?')) }, class: 'btn btn-warning'
 %p
   %h4 Reviews:
   = render 'reviews/form'
 
 = render reviews
 
-.form-actions
-  = link_to "Back", products_path, class: 'btn'
-  = link_to "Edit", edit_category_product_path(product.category, product), class: 'btn btn-info'
-  = link_to "Delete", category_product_path(product.category, product), method: "delete", data: { confirm: t('.confirm', default: t("helpers.links.confirm", default:'Are you sure?')) }, class: 'btn btn-warning'
+
